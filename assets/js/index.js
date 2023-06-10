@@ -6,14 +6,15 @@ searchButton.addEventListener('click', () => {
     const cardNumber = cardnNumberInput.value;
     if (cardNumber === '') {
         const errorCardHTML = `
-  <img src="/assets/img/notFound.png" alt="error-image">
-    <p> Por favor, ingresa un número de Pokémon válido.</p>
-  `;
-
-    pokemonContainer.innerHTML = errorCardHTML;
+        <img src="/assets/img/notFound.png" alt="error-image">
+        <p> Por favor, ingresa un número de Pokémon válido.</p>
+        `;
+        pokemonContainer.innerHTML = errorCardHTML;
         return;
     }
     fetchPokemonData(cardNumber);
+
+    cardnNumberInput.value ="";
 });
 
 function fetchPokemonData(cardNumber) {
@@ -25,7 +26,6 @@ function fetchPokemonData(cardNumber) {
             
                 throw new Error('Pokémon no encontrado');
                 
-                
             }
             return response.json();
         })
@@ -34,6 +34,11 @@ function fetchPokemonData(cardNumber) {
         })
         .catch(error => {
             showError(error.message);
+            const empyCardHTML = `
+        <img src="/assets/img/emptyError.png" alt="error-image">
+        <p> Pokémon no encontrado.</p>
+        `;
+        pokemonContainer.innerHTML = empyCardHTML;
         });
 }
 
@@ -54,9 +59,10 @@ function displayPokemonData(pokemonData) {
   `;
 
     pokemonContainer.innerHTML = pokemonCardHTML;
-}
 
+}
 function showError(errorMessage) {
     const errorHTML = `<p class="error-message">${errorMessage}</p>`;
     pokemonContainer.innerHTML = errorHTML;
+
 }
