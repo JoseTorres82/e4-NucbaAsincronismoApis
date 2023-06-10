@@ -17,6 +17,7 @@ searchButton.addEventListener('click', () => {
     cardnNumberInput.value ="";
 });
 
+
 function fetchPokemonData(cardNumber) {
     const apiUrl = `https://pokeapi.co/api/v2/pokemon/${cardNumber}`;
 
