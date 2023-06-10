@@ -120,10 +120,9 @@ input {
     font-size: 16px;
 
 }
-button {
+#btn-buscar {
     width: 80px;
     height: 80px;
-    text-align:center;
     border-radius: 50%;
     background-image: url(/assets/img/pngwing.com.png);
     background-repeat: no-repeat;
@@ -133,6 +132,7 @@ button {
     cursor: pointer;
     padding: 5px;
     margin: 5px;
+    text-rendering: none;
 }
 
 .contenedor-pokemon {
